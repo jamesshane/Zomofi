@@ -51,6 +51,7 @@
 
 <body>
 
+  <div id="fade-wrapper" onclick="javascript:toggleSound();"></div>
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
@@ -58,18 +59,16 @@
         <div class="hero-logo2">
           <p>zomofi</p>
         </div>
-
         <h1>Welcome to Zomofi studios</h1>
         <h2>Please <span class="rotating">listen..., relax..., enjoy..., chill..., live.</span></h2>
         <div class="actions">
 
- <audio
+ <audio id="audioplyr"
           controls
           src="http://34.67.49.95/live">
               Your browser does not support the
               <code>audio</code> element.
       </audio>
-          
         </div>
       </div>
     </div>

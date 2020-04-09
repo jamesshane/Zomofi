@@ -13,6 +13,15 @@ body {
   color: #666666;
   font-family: "Open Sans", sans-serif;
 }
+  
+  
+#fade-wrapper {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(255, 0, 0, 0.05);
+  z-index: 1000;
+}
 
 a {
   color: #03C4EB;

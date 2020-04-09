@@ -4,6 +4,15 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+function toggleSound() {
+  var audioElem = document.getElementById('audioplyr');
+  if (audioElem.paused)
+    audioElem.play();
+  else
+    audioElem.pause();
+}
+
 !(function($) {
   "use strict";
 
