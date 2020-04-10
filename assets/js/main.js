@@ -6,12 +6,30 @@
 */
 
 function toggleSound() {
+  pickColor();
   var audioElem = document.getElementById('audioplyr');
   if (audioElem.paused)
     audioElem.play();
   else
     audioElem.pause();
 }
+
+function pickColor() { 
+              
+  // Array containing colors  001,010,011-100,101,110-111,000
+  var colors = [ 
+      '#0000ff', '#00ff00', '#00ffff', 
+      '#ff0000', '#ff00ff', '#ffff00',
+      '#ffffff', '#000000' 
+  ]; 
+    
+  // selecting random color 
+  var random_color = colors[Math.floor( 
+          Math.random() * colors.length)]; 
+    
+  var x = document.getElementById('color-overlay'); 
+  x.style.backgroundColor = random_color; 
+}  
 
 !(function($) {
   "use strict";
@@ -20,6 +38,7 @@ function toggleSound() {
   $(window).on('load', function() {
     $('#preloader').delay(100).fadeOut('slow', function() {
       $(this).remove();
+      pickColor();
     });
   });
 
