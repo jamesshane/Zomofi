@@ -58,6 +58,12 @@ audio {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: none;
+}
+
+#bulb {
+  opacity: 0.5;
+  color: white;
 }
 
 /* Prelaoder */

@@ -6,12 +6,15 @@
 */
 
 function toggleSound() {
-  pickColor();
+  var rcolor=pickColor();
   var audioElem = document.getElementById('audioplyr');
-  if (audioElem.paused)
+  if (audioElem.paused) {
     audioElem.play();
-  else
+    $( "#bulb" ).removeClass( "far" ).addClass("fas").css("color", rcolor);;
+  } else {
     audioElem.pause();
+    $( "#bulb" ).removeClass( "fas" ).addClass("far").css("color","white");
+  } 
 }
 
 function pickColor() { 
@@ -20,7 +23,7 @@ function pickColor() {
   var colors = [ 
       '#0000ff', '#00ff00', '#00ffff', 
       '#ff0000', '#ff00ff', '#ffff00',
-      '#ffffff', '#000000' 
+      '#ffffff' 
   ]; 
     
   // selecting random color 
@@ -29,6 +32,7 @@ function pickColor() {
     
   var x = document.getElementById('color-overlay'); 
   x.style.backgroundColor = random_color; 
+  return random_color;
 }  
 
 !(function($) {
