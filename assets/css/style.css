@@ -61,9 +61,15 @@ audio {
   display: none;
 }
 
-#bulb {
+.actions i {
   opacity: 0.5;
   color: white;
+/*   margin-left: 10px;
+  margin-right: 10px; */
+}
+
+.a1 {
+  display: none;
 }
 
 /* Prelaoder */

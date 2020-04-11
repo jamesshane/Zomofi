@@ -10,10 +10,12 @@ function toggleSound() {
   var audioElem = document.getElementById('audioplyr');
   if (audioElem.paused) {
     audioElem.play();
-    $( "#bulb" ).removeClass( "far" ).addClass("fas").css("color", rcolor);;
+    $( "#bulb" ).removeClass( "far" ).addClass("fas").css("color", rcolor);
+    $( "#pause" ).addClass("fa-rotate-90").css("color", rcolor);
   } else {
     audioElem.pause();
     $( "#bulb" ).removeClass( "fas" ).addClass("far").css("color","white");
+    $( "#pause" ).removeClass("fa-rotate-90").css("color", "white");
   } 
 }
 
@@ -22,8 +24,7 @@ function pickColor() {
   // Array containing colors  001,010,011-100,101,110-111,000
   var colors = [ 
       '#0000ff', '#00ff00', '#00ffff', 
-      '#ff0000', '#ff00ff', '#ffff00',
-      '#ffffff' 
+      '#ff0000', '#ff00ff', '#ffff00'
   ]; 
     
   // selecting random color 
