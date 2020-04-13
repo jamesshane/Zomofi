@@ -5,6 +5,22 @@
  * License: https://bootstrapmade.com/license/
  */
 
+function lockBodyScroll(lock) {
+  var tag = document.querySelector('.container'); // the child element of body that contains the long content
+  if (!tag) return;
+  var elem = document.scrollingElement || document.body;
+  if (lock) {
+      var scrollTop = elem.scrollTop;
+      tag.classList.add('no-scroll');
+      tag.style.top = '-' + scrollTop + 'px';
+  } else {
+      var top = tag.offsetTop;
+      tag.classList.remove('no-scroll');
+      tag.style.top = '0px';
+      elem.scrollTop = - top;
+  }
+}
+
 var is_opera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 var is_Edge = navigator.userAgent.indexOf("Edge") > -1;
 var is_chrome = !!window.chrome && !is_opera && !is_Edge;
@@ -32,6 +48,7 @@ function setEvents() {
     $("#volume_up-overlay").hide();
     $("#volume_down-overlay").hide();
   }
+  lockBodyScroll(true);
 }
 
 function toggleSound() {
