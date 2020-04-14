@@ -6,7 +6,7 @@
 */
 
 :root {
-  --volume-opacity: 0.5;
+  --volume-opacity: 0.0;
   --audio-display: none;
   --audio-z:-500;
 }
