@@ -8,7 +8,8 @@
 function lockBodyScroll(lock) {
   var tag = document.querySelector('.container'); // the child element of body that contains the long content
   if (!tag) return;
-  var elem = document.scrollingElement || document.body;
+  //var elem = document.scrollingElement || document.body;
+  var elem = document.body;
   if (lock) {
       var scrollTop = elem.scrollTop;
       tag.classList.add('no-scroll');
@@ -48,7 +49,7 @@ function setEvents() {
     $("#volume_up-overlay").hide();
     $("#volume_down-overlay").hide();
   }
-  lockBodyScroll(true);
+  //lockBodyScroll(true);
 }
 
 function toggleSound() {
@@ -84,9 +85,11 @@ function adjVolume() {
   }
   else if(vol < 0) {
     $("#volume").css("color", "grey");
+    $("#volume").css("opacity", "0.3");
   }
   else {
     $("#volume").css("color", "white");
+    $("#volume").css("opacity", "0.5");
   }
 
 }
@@ -113,6 +116,7 @@ function colorChange() {
   $("#pause").addClass("fa-rotate-90").css("color", random_color);
   var x = document.getElementById("color-overlay");
   x.style.backgroundColor = random_color;
+  document.body.style.backgroundColor = random_color;
   adjVolume();
 }
 
@@ -121,6 +125,7 @@ function colorWhite() {
   $("#pause").removeClass("fa-rotate-90").css("color", "white");
   var x = document.getElementById("color-overlay");
   x.style.backgroundColor = "white";
+  document.body.style.backgroundColor = "white";
   $("#volume").css("color", "darkgrey");
 }
 
