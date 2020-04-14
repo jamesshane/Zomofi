@@ -6,7 +6,7 @@
 */
 
 :root {
-  --volume-opacity: 0.0;
+  --volume-opacity: 0.5;
   --audio-display: none;
   --audio-z:-500;
 }
@@ -54,7 +54,7 @@ body {
   position: fixed;
   right: 0;
   bottom: 0;
-  height: 20vh;
+  height: 35vh;
   width: 100vw;
   background-color: green;
   opacity: var(--volume-opacity);

@@ -117,6 +117,7 @@ function colorChange() {
   var x = document.getElementById("color-overlay");
   x.style.backgroundColor = random_color;
   document.body.style.backgroundColor = random_color;
+  $("#hero .hero-logo2 p").css("color", random_color);
   adjVolume();
 }
 
@@ -126,6 +127,7 @@ function colorWhite() {
   var x = document.getElementById("color-overlay");
   x.style.backgroundColor = "white";
   document.body.style.backgroundColor = "white";
+  $("#hero .hero-logo2 p").css("color", "#666666");
   $("#volume").css("color", "darkgrey");
 }
 
