@@ -9,6 +9,7 @@
   --volume-opacity: 0.0;
   --audio-display: none;
   --audio-z:-500;
+  --background: #666666;
 }
 
 .no-scroll {
@@ -18,14 +19,14 @@
 
 .containerx {
   padding: 5%;
-  border-radius: 30px 50px 30px 0px;
+  border-radius: 30px;
 }
 
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 body {
-  background: #fff;
+  background:var(--background);
   color: #666666;
   font-family: "Open Sans", sans-serif;
   /* position: fixed;  */
@@ -161,12 +162,36 @@ audio {
 /*--------------------------------------------------------------
 # Welcome
 --------------------------------------------------------------*/
+
+:root {
+
+  /* --image: url(../img/background/hero-bg.jpg); */
+  --image:'';
+
+  --color-v: black;
+  --color: grey; 
+  
+  --transpct: 50%;
+  --colorvpct: 90%;
+}
+
 #hero {
   display: table;
   width: 100%;
   height: 100vh;
-  background: url(../img/hero-bg.jpg) top center;
+  /* background: url(../img/hero-bg.jpg) top center; */
   background-size: cover;
+
+  flex: 1;
+  /* background-image: var(--image); */
+  background: 
+    radial-gradient(circle, transparent var(--transpct), var(--color-v) var(--colorvpct)),
+    linear-gradient(to right, var(--color), var(--color)), var(--image);
+  background-position: center center;
+  background-blend-mode: 
+    var(--blend-top, normal),
+    var(--blend-bottom, saturation),
+    normal;
 }
 
 @media (min-width: 1024px) {

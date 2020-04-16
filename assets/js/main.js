@@ -29,6 +29,10 @@ var is_explorer= typeof document !== 'undefined' && !!document.documentMode && !
 var is_firefox = typeof window.InstallTrigger !== 'undefined';
 var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
+var bgimages = ['butt.jpg', 'girlbed.jpg', 'graffiti.jpg', 'hero-bg.jpg', 'mic.jpg', 'pinkhairgirl.jpg', 'record.jpg', 'rose.jpg', 'scream.jpg', 'tatgirl.jpg', 'underwear.jpg', 'wall.jpg', 'wetgirl.jpg'];
+
+  var random_bg=bgimages[Math.floor(Math.random() * bgimages.length)];
+
 /* document.getElementById("zomofi").ontouchend = (e) => {
   e.preventDefault();
 }; */
@@ -37,6 +41,9 @@ var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
  var random_color=null;
 
 function setEvents() {
+  var html = document.getElementsByTagName('html')[0];
+  html.style.cssText = "--image: url(../img/background/"+random_bg+")";
+  //$('#hero').css({'background-image': 'url(../img/background/' + bgimages[Math.floor(Math.random() * bgimages.length)] + ')'});
   audioElem = document.getElementById("audioplyr");
   audioElem.onplaying = colorChange;
   audioElem.onpause = colorWhite;
@@ -153,11 +160,11 @@ function pickColor() {
 
   // Preloader
   $(window).on("load", function () {
+    setEvents();
     $("#preloader")
-      .delay(100)
+      .delay(500)
       .fadeOut("slow", function () {
         $(this).remove();
-        setEvents();
       });
   });
 
