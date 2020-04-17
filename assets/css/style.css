@@ -6,20 +6,34 @@
 */
 
 :root {
-  --volume-opacity: 0.0;
-  --audio-display: none;
-  --audio-z:-500;
   --background: #666666;
-}
 
-.no-scroll {
-  position: fixed;
-  width: 100%;
+  --audio-z:-500;
+  --filter-overlay-z: -1;
+  --color-overlay-z: 1000;
+  --volume-z: 1005;
+
+  --volume-opacity: 0.0;
+  --color-overlay-opacity: 0.1;
+  --filter-overlay-opacity: 1;
+
+  --audio-display: none;
+
+  --image: 'url(../img/background/hero-bg.jpg)';
+  --image: '';
 }
 
 .containerx {
   padding: 5%;
   border-radius: 30px;
+}  
+#debug {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  background-color: blue;
+  z-index: 30000;
+  opacity: 0;
 }
 
 /*--------------------------------------------------------------
@@ -28,18 +42,31 @@
 body {
   background:var(--background);
   color: #666666;
+  overflow: hidden;
   font-family: "Open Sans", sans-serif;
-  /* position: fixed;  */
 }
   
+#filter-overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  background: var(--image) top center;
+  background-size: cover;
+  opacity: var(--filter-overlay-opacity);
+  z-index: var(--filter-overlay-z);
+  filter: blur(5px);
+  filter: grayscale(100%);
+  border-radius: 30px;
+}
   
 #color-overlay {
   position: fixed;
   height: 100vh;
   width: 100vw;
   background-color: white;
-  opacity: 0.1;
-  z-index: 1000;
+  opacity: var(--color-overlay-opacity);
+  z-index: var(--color-overlay-z);
 }
 
 #volume_up-overlay {
@@ -48,7 +75,7 @@ body {
   width: 100vw;
   background-color: greenyellow;
   opacity: var(--volume-opacity);
-  z-index: 1005;
+  z-index: var(--volume-z);
 }
 
 #volume_down-overlay {
@@ -59,18 +86,7 @@ body {
   width: 100vw;
   background-color: green;
   opacity: var(--volume-opacity);
-  z-index: 1005;
-}
-
-a {
-  color: #03C4EB;
-  transition: 0.5s;
-}
-
-a:hover, a:active, a:focus {
-  color: #03c5ec;
-  outline: none;
-  text-decoration: none;
+  z-index: var(--volume-z);
 }
 
 p {
@@ -128,59 +144,16 @@ audio {
   background: #fff url("../img/preloader.svg") no-repeat center center;
 }
 
-/* Back to top button */
-.back-to-top {
-  position: fixed;
-  display: none;
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  padding: 6px 12px 9px 12px;
-  font-size: 16px;
-  border-radius: 2px;
-  right: 15px;
-  bottom: 15px;
-  transition: background 0.5s;
-}
-
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 15px;
-  }
-}
-
-.back-to-top:focus {
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  outline: none;
-}
-
-.back-to-top:hover {
-  background: #03C4EB;
-  color: #fff;
-}
-
 /*--------------------------------------------------------------
 # Welcome
 --------------------------------------------------------------*/
-
-:root {
-
-  /* --image: url(../img/background/hero-bg.jpg); */
-  --image:'';
-
-  --color-v: black;
-  --color: grey; 
-  
-  --transpct: 50%;
-  --colorvpct: 90%;
-}
 
 #hero {
   display: table;
   width: 100%;
   height: 100vh;
-  background: var(--image) top center;
-  background-size: cover;
+  /* background: var(--image) top center;
+  background-size: cover; */
   /* filter: blur(5px); */
 }
 
@@ -209,7 +182,6 @@ audio {
   text-align: center;
   vertical-align: middle;
   border-radius: 25px;
-  filter: none;
 }
 
 #hero h1 {

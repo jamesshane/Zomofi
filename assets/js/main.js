@@ -30,8 +30,25 @@ var is_firefox = typeof window.InstallTrigger !== 'undefined';
 var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 var bgimages = ['butt.jpg', 'girlbed.jpg', 'graffiti.jpg', 'hero-bg.jpg', 'mic.jpg', 'pinkhairgirl.jpg', 'record.jpg', 'rose.jpg', 'scream.jpg', 'tatgirl.jpg', 'underwear.jpg', 'wall.jpg', 'wetgirl.jpg'];
+var random_bg=bgimages[Math.floor(Math.random() * bgimages.length)];
 
-  var random_bg=bgimages[Math.floor(Math.random() * bgimages.length)];
+// debug----
+document.getElementById("debug").onclick=clickDebug;
+function clickDebug() {
+  console.log("debug");
+  changePhoto();
+}
+var photoIdx=0;
+function changePhoto() {
+  console.log("changePhoto");
+  if(photoIdx===bgimages.length)
+    photoIdx=0;
+  var drandom_bg=bgimages[photoIdx];
+  var dhtml = document.getElementsByTagName('html')[0];
+  dhtml.style.cssText = "--image: url(../img/background/"+drandom_bg+")";
+  photoIdx+=1;
+}
+// debug----
 
 /* document.getElementById("zomofi").ontouchend = (e) => {
   e.preventDefault();
@@ -49,8 +66,8 @@ function setEvents() {
   audioElem.onpause = colorWhite;
   document.getElementById("color-overlay").onclick=toggleSound;
   //printVolume();
-  console.log(is_safari);
-  console.log(is_chrome);
+  //console.log(is_safari);
+  //console.log(is_chrome);
   if(is_safari) {
     $(".a3").hide();
     $("#volume_up-overlay").hide();
@@ -74,11 +91,11 @@ function toggleSound() {
 
 function getVolume() {
   var volDeg=Math.trunc(audioElem.volume*10)/2;
-  console.log(volDeg);
+  // console.log(volDeg);
   volDeg-=1;
-  console.log(volDeg);
+  // console.log(volDeg);
   volDeg*=90;
-  console.log(volDeg);
+  // console.log(volDeg);
   return Number(volDeg);
 }
 
@@ -102,7 +119,7 @@ function adjVolume() {
 }
 
 function volumeUp() {
-  console.log("up");
+  // console.log("up");
   try {
   audioElem.volume+=0.2;
   adjVolume();
@@ -110,7 +127,7 @@ function volumeUp() {
 }
 
 function volumeDown() {
-  console.log("down");
+  // console.log("down");
   try {
   audioElem.volume-=0.2;
   adjVolume();
@@ -133,7 +150,7 @@ function colorWhite() {
   $("#pause").removeClass("fa-rotate-90").css("color", "white");
   var x = document.getElementById("color-overlay");
   x.style.backgroundColor = "white";
-  document.body.style.backgroundColor = "white";
+  document.body.style.backgroundColor = "#666666";
   $("#hero .hero-logo2 p").css("color", "#666666");
   $("#volume").css("color", "darkgrey");
 }
@@ -162,7 +179,7 @@ function pickColor() {
   $(window).on("load", function () {
     setEvents();
     $("#preloader")
-      .delay(500)
+      .delay(200)
       .fadeOut("slow", function () {
         $(this).remove();
       });
