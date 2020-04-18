@@ -29,8 +29,16 @@ var is_explorer= typeof document !== 'undefined' && !!document.documentMode && !
 var is_firefox = typeof window.InstallTrigger !== 'undefined';
 var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-var bgimages = ['butt.jpg', 'girlbed.jpg', 'graffiti.jpg', 'hero-bg.jpg', 'mic.jpg', 'pinkhairgirl.jpg', 'record.jpg', 'rose.jpg', 'scream.jpg', 'tatgirl.jpg', 'underwear.jpg', 'wall.jpg', 'wetgirl.jpg'];
-var random_bg=bgimages[Math.floor(Math.random() * bgimages.length)];
+
+var bgimages = {
+  music:['record.jpg'],needs_treatment:['ingo-schulz-lNQ7kD8A1SI-unsplash.jpg','patrick-lindenberg-1iVKwElWrPA-unsplash.jpg','ricardo-abreu-dZPp5ZVMcN0-unsplash.jpg'],sex:['butt.jpg','girlbed.jpg','scream.jpg','tatgirl.jpg','underwear.jpg','wetgirl.jpg'],unsorted:['mic.jpg','pinkhairgirl.jpg','rose.jpg','woman-1281209_1920.jpg'],urban:['graffiti.jpg','hero-bg.jpg','wall.jpg']
+};
+var theme="all";
+if(theme==="all") {
+  var keys=Object.keys(bgimages);
+  theme=keys[Math.floor(Math.random() * keys.length)];
+}
+var random_bg=bgimages[theme][Math.floor(Math.random() * bgimages[theme].length)];
 
 // debug----
 document.getElementById("debug").onclick=clickDebug;
@@ -41,11 +49,11 @@ function clickDebug() {
 var photoIdx=0;
 function changePhoto() {
   console.log("changePhoto");
-  if(photoIdx===bgimages.length)
+  if(photoIdx===bgimages[theme].length)
     photoIdx=0;
-  var drandom_bg=bgimages[photoIdx];
+  var drandom_bg=bgimages[theme][photoIdx];
   var dhtml = document.getElementsByTagName('html')[0];
-  dhtml.style.cssText = "--image: url(../img/background/"+drandom_bg+")";
+  dhtml.style.cssText = "--image: url(../img/background/themes/"+theme+"/"+drandom_bg+")";
   photoIdx+=1;
 }
 // debug----
@@ -59,7 +67,7 @@ function changePhoto() {
 
 function setEvents() {
   var html = document.getElementsByTagName('html')[0];
-  html.style.cssText = "--image: url(../img/background/"+random_bg+")";
+  html.style.cssText = "--image: url(../img/background/themes/"+theme+"/"+random_bg+")";
   //$('#hero').css({'background-image': 'url(../img/background/' + bgimages[Math.floor(Math.random() * bgimages.length)] + ')'});
   audioElem = document.getElementById("audioplyr");
   audioElem.onplaying = colorChange;
@@ -179,7 +187,7 @@ function pickColor() {
   $(window).on("load", function () {
     setEvents();
     $("#preloader")
-      .delay(200)
+      .delay(500)
       .fadeOut("slow", function () {
         $(this).remove();
       });
