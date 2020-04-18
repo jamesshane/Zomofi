@@ -20,7 +20,7 @@
   --audio-display: none;
 
   --image: 'url(../img/background/hero-bg.jpg)';
-  --image: '';
+  /* --image: ''; */
 }
 
 .containerx {
@@ -40,7 +40,8 @@
 # General
 --------------------------------------------------------------*/
 body {
-  background:var(--background);
+  background-color:var(--background);
+  /* background-image: var(--image); */
   color: #666666;
   overflow: hidden;
   font-family: "Open Sans", sans-serif;

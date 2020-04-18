@@ -58,30 +58,28 @@ function changePhoto() {
 }
 // debug----
 
-/* document.getElementById("zomofi").ontouchend = (e) => {
-  e.preventDefault();
-}; */
-
  var audioElem =null;
  var random_color=null;
 
 function setEvents() {
-  var html = document.getElementsByTagName('html')[0];
-  html.style.cssText = "--image: url(../img/background/themes/"+theme+"/"+random_bg+")";
+  console.log("Safari: "+is_safari);
+  if(is_safari) {
+    // $('body').css('background-image', 'url(../img/background/themes/'+theme+'/'+random_bg+')');
+    $('#filter-overlay').hide();
+    $('#color-overlay').hide();
+    $(".a3").hide();
+    $("#volume_up-overlay").hide();
+    $("#volume_down-overlay").hide();
+  document.getElementById("plrControls").onclick=toggleSound;
+  } else {
+    var html = document.getElementsByTagName('html')[0];
+    html.style.cssText = "--image: url(../img/background/themes/"+theme+"/"+random_bg+")";
+    document.getElementById("color-overlay").onclick=toggleSound;
+  }
   //$('#hero').css({'background-image': 'url(../img/background/' + bgimages[Math.floor(Math.random() * bgimages.length)] + ')'});
   audioElem = document.getElementById("audioplyr");
   audioElem.onplaying = colorChange;
   audioElem.onpause = colorWhite;
-  document.getElementById("color-overlay").onclick=toggleSound;
-  //printVolume();
-  //console.log(is_safari);
-  //console.log(is_chrome);
-  if(is_safari) {
-    $(".a3").hide();
-    $("#volume_up-overlay").hide();
-    $("#volume_down-overlay").hide();
-  }
-  //lockBodyScroll(true);
 }
 
 function toggleSound() {
@@ -94,7 +92,6 @@ function toggleSound() {
     document.getElementById("volume_up-overlay").onclick=null;
     document.getElementById("volume_down-overlay").onclick=null;
   }
-  //printVolume();
 }
 
 function getVolume() {
