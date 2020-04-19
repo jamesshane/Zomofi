@@ -22,6 +22,26 @@ function lockBodyScroll(lock) {
   }
 }
 
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    return "unknown";
+}
+
 var is_opera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 var is_Edge = navigator.userAgent.indexOf("Edge") > -1;
 var is_chrome = !!window.chrome && !is_opera && !is_Edge;
@@ -63,14 +83,15 @@ function changePhoto() {
 
 function setEvents() {
   console.log("Safari: "+is_safari);
-  if(is_safari) {
+  console.log("OS: "+getMobileOperatingSystem());
+  if(getMobileOperatingSystem()!=="unknown") {
     // $('body').css('background-image', 'url(../img/background/themes/'+theme+'/'+random_bg+')');
     $('#filter-overlay').hide();
     $('#color-overlay').hide();
     $(".a3").hide();
     $("#volume_up-overlay").hide();
     $("#volume_down-overlay").hide();
-  document.getElementById("plrControls").onclick=toggleSound;
+    document.getElementById("plrControls").onclick=toggleSound;
   } else {
     var html = document.getElementsByTagName('html')[0];
     html.style.cssText = "--image: url(../img/background/themes/"+theme+"/"+random_bg+")";
