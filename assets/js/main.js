@@ -85,18 +85,15 @@ function setEvents() {
   console.log("Safari: "+is_safari);
   console.log("OS: "+getMobileOperatingSystem());
   if(getMobileOperatingSystem()!=="unknown") {
-    // $('body').css('background-image', 'url(../img/background/themes/'+theme+'/'+random_bg+')');
-    $('#filter-overlay').hide();
-    $('#color-overlay').hide();
-    $(".a3").hide();
-    $("#volume_up-overlay").hide();
-    $("#volume_down-overlay").hide();
-    document.getElementById("plrControls").onclick=toggleSound;
+    // $('body').css('background-image', 'url(assets/img/background/themes/'+theme+'/'+random_bg+')');
   } else {
     var html = document.getElementsByTagName('html')[0];
     html.style.cssText = "--image: url(../img/background/themes/"+theme+"/"+random_bg+")";
-    document.getElementById("color-overlay").onclick=toggleSound;
+    $('.a1').hide();
   }
+  document.getElementById("color-overlay").onclick=toggleSound;
+  document.getElementById("plrControls").onclick=toggleSound;
+  document.getElementById("bulb").onclick=toggleSound;
   //$('#hero').css({'background-image': 'url(../img/background/' + bgimages[Math.floor(Math.random() * bgimages.length)] + ')'});
   audioElem = document.getElementById("audioplyr");
   audioElem.onplaying = colorChange;

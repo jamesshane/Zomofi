@@ -19,8 +19,8 @@
 
   --audio-display: none;
 
-  --image: 'url(../img/background/hero-bg.jpg)';
-  /* --image: ''; */
+  --image_mob: url(../img/background/hero-bg.jpg);
+  --image: '';
 }
 
 .containerx {
@@ -41,18 +41,22 @@
 --------------------------------------------------------------*/
 body {
   background-color:var(--background);
-  /* background-image: var(--image); */
   color: #666666;
   overflow: hidden;
   font-family: "Open Sans", sans-serif;
 }
 
-@media (min-width: 768px) {
+@media only screen 
+and (max-width: 768px)  {
   body {
-    /* background-color:var(--background); */
-    /* background-image: var(--image); */
-    overflow: hidden;
-    font-family: "Open Sans", sans-serif;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background:var(--image_mob) top center;
+  }
+
+  #filer-overlay, #color-overlay, #volume_up-overlay, #volume_down-overlay, .a2, .a3 {
+    display: none;
   }
 }
   
@@ -138,9 +142,9 @@ audio {
   color: darkgrey;
 }
 
-.a1 {
+/* .a1 {
   display: none;
-}
+} */
 
 /* Prelaoder */
 #preloader {
