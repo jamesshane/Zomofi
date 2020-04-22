@@ -20,6 +20,7 @@
   --audio-display: none;
 
   --image_mob: url(../img/background/hero-bg.jpg);
+  --image_mob: url(//picsum.photos/g/1080/720);
   --image: '';
 }
 
@@ -52,7 +53,7 @@ and (max-width: 768px)  {
     /* position: fixed;
     height: 100vh;
     width: 100vw; */
-    background:url(../img/background/hero-bg.jpg) top center;
+    background:url(//picsum.photos/g/1080/720?blur=2) top center;
   }
 
   #filer-overlay, #color-overlay, #volume_up-overlay, #volume_down-overlay, .a2, .a3 {
